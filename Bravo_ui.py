@@ -115,7 +115,7 @@ def main():
 	
 #		print ('mess = ' + mess)
 	
-		var_list = send_mess(s,mess)
+		var_list = send_mess(s,mess,time_out=1.0)
 		#var_list = '#VARSLIST,6,XX\n#0,TWD,XX\n#1,TWS,XX\n#2,TWA,XX\n#3,AWA,XX\n#4,AWS,XX\n#5,BS,XX,\n'
 		var_dict = convert_bravo_vars_list_to_dict(var_list)
 	
@@ -131,13 +131,13 @@ def main():
 	# kill Bravo broadcast on this port
 	
 		mess = 'DISABLEREFRESHEDVARS'
-		var_list = send_mess(s,mess)
+		var_list = send_mess(s,mess, time_out=0.1)
 
 		mess = 'CLEARREFRESHEDVARS'
-		var_list = send_mess(s,mess)
+		var_list = send_mess(s,mess, time_out=0.1)
 	
 		mess = 'CLEARREMOTEVARS'
-		var_list = send_mess(s,mess)
+		var_list = send_mess(s,mess, time_out=0.1)
 	
 	
 	
@@ -175,10 +175,10 @@ def main():
 			var_chan = var_dict[yy]
 		
 			mess = 'SETREFRESHEDVAR,'+str(idx)+','+str(var_name)+','+str(var_name)+','+str(1)
-			var_list = send_mess(s,mess)
+			var_list = send_mess(s,mess, time_out=0.1)
 	
 			mess = 'ENABLEREFRESHEDVARS,1.0' # NOTE frequency = 1 Hz
-			var_list = send_mess(s,mess)
+			var_list = send_mess(s,mess, time_out=0.1)
 	
 #	mess = 'LISTREFRESHEDVARS'
 #	var_list = send_mess(s,mess)

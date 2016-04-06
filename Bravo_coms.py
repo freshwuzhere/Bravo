@@ -4,7 +4,7 @@
 import socket
 import time
 
-def send_mess(s,mess):
+def send_mess(s,mess,time_out=0.1):
 
 	# need to generate the checksum and also add /n
 	chk_sum = get_checksum('#'+mess+',')
@@ -18,7 +18,7 @@ def send_mess(s,mess):
 	
 	print ('message sent')
 	
-	time_out = 1
+#	time_out = 1. original value that works but is slow
 	total_data = []
 	data = ''
 	
